@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+@*
+Author: Zenwyn Naicker
+Code Attribution:
+**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2025
+ * Title: Razor syntax reference for ASP.NET Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-10.0> [Accessed 6 April 2026]
+ **************************************************************************************************************
+**************************************************************************************************************
+ * Author: Bootstrap Team
+ * Date: 2026
+ * Title: Get started with Bootstrap
+ * Type: [Source Code]
+ * Available at: <https://getbootstrap.com/docs/5.3/getting-started/introduction/> [Accessed 6 April 2026]
+ **************************************************************************************************************
+*@
+
+<div class="glms-page-header">
+    <div>
+        <h1 class="glms-page-title">Global Logistics Management System</h1>
+        <p class="glms-page-subtitle">Manage clients, contracts, service requests, and signed agreements.</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="glms-card">
+            <h5 class="glms-card-title">Clients</h5>
+            <p class="glms-card-text">Create and view logistics client records by region and contact details.</p>
+            <a asp-controller="Clients" asp-action="Index" class="btn btn-primary">View Clients</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="glms-card">
+            <h5 class="glms-card-title">Contracts</h5>
+            <p class="glms-card-text">Track contract dates, service levels, statuses, and signed PDFs.</p>
+            <a asp-controller="Contracts" asp-action="Index" class="btn btn-primary">View Contracts</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="glms-card">
+            <h5 class="glms-card-title">Service Requests</h5>
+            <p class="glms-card-text">Raise service requests against active contracts with ZAR cost conversion.</p>
+            <a asp-controller="Contracts" asp-action="Index" class="btn btn-primary">Find Contract</a>
+        </div>
+    </div>
+</div>

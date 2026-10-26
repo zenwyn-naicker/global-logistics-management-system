@@ -1,0 +1,122 @@
+/*Author: Zenwyn Naicker*/
+/*Code Attribution: */
+/**************************************************************************************************************
+ * Author: Bootstrap Team
+ * Date: 2026
+ * Title: Get started with Bootstrap
+ * Type: [Source Code]
+ * Available at: <https://getbootstrap.com/docs/5.3/getting-started/introduction/> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background: #f4f7fb;
+    color: #212529;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+.glms-navbar {
+    background: #123c69;
+}
+
+.glms-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.glms-page-title {
+    margin: 0;
+    font-weight: 700;
+    color: #123c69;
+}
+
+.glms-page-subtitle {
+    margin: 0.25rem 0 0;
+    color: #6c757d;
+}
+
+.glms-panel {
+    background: #ffffff;
+    border: 1px solid #dce6f1;
+    border-radius: 8px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 12px rgba(18, 60, 105, 0.06);
+}
+
+.glms-card {
+    background: #ffffff;
+    border: 1px solid #dce6f1;
+    border-radius: 8px;
+    padding: 1.25rem;
+    height: 100%;
+    box-shadow: 0 4px 12px rgba(18, 60, 105, 0.06);
+}
+
+.glms-card-title {
+    color: #123c69;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.glms-card-text {
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.table {
+    background: #ffffff;
+}
+
+.badge-status {
+    min-width: 72px;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+    .btn-primary:hover {
+        background-color: #0b5ed7;
+        border-color: #0a58ca;
+    }
+
+a {
+    color: #0d6efd;
+}
+
+    a:hover {
+        color: #0a58ca;
+    }
+
+@media (max-width: 576px) {
+    .glms-page-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

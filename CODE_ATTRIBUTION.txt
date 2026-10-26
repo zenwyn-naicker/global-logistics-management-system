@@ -1,0 +1,256 @@
+/*Author: Zenwyn Naicker*/
+/*Code Attribution: */
+/**************************************************************************************************************
+ * Author: W3Schools
+ * Date: 2026
+ * Title: C# Tutorial (C Sharp)
+ * Type: [Source Code]
+ * Available at: <https://www.w3schools.com/cs/index.php> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2026
+ * Title: Get started with ASP.NET Core MVC
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/start-mvc?view=aspnetcore-10.0> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2025
+ * Title: Tag Helpers in forms in ASP.NET Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/mvc/views/working-with-forms?view=aspnetcore-10.0> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2025
+ * Title: Razor syntax reference for ASP.NET Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-10.0> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2026
+ * Title: Configuration in ASP.NET Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-10.0> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2026
+ * Title: Dependency injection in ASP.NET Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-10.0> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2026
+ * Title: Microsoft SQL Server Database Provider - EF Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/ef/core/providers/sql-server/> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2023
+ * Title: Getting Started - EF Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2023
+ * Title: One-to-many relationships
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/ef/core/modeling/relationships/one-to-many> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2023
+ * Title: Value Conversions
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/ef/core/modeling/value-conversions> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2025
+ * Title: Upload files in ASP.NET Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-10.0> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2025
+ * Title: Use the IHttpClientFactory
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/dotnet/core/extensions/httpclient-factory> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2024
+ * Title: How to use a JSON document object model in System.Text.Json
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/use-dom> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: ExchangeRate-API
+ * Date: 2026
+ * Title: Pair Conversion Requests
+ * Type: [Source Code]
+ * Available at: <https://www.exchangerate-api.com/docs/pair-conversion-requests> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Refactoring.Guru
+ * Date: 2026
+ * Title: Factory Method in C#
+ * Type: [Source Code]
+ * Available at: <https://refactoring.guru/design-patterns/factory-method/csharp/example> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Refactoring.Guru
+ * Date: 2026
+ * Title: Strategy in C#
+ * Type: [Source Code]
+ * Available at: <https://refactoring.guru/design-patterns/strategy/csharp/example> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Refactoring.Guru
+ * Date: 2026
+ * Title: Observer in C#
+ * Type: [Source Code]
+ * Available at: <https://refactoring.guru/design-patterns/observer/csharp/example> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Anthropic
+ * Date: 2026
+ * Title: Sample code of Factory Method pattern for MVC web app
+ * Type: [Source Code]
+ * Link to chat: <https://claude.ai/share/c93df5eb-9b5f-4d60-bc68-26f2f323537a> [Accessed 12 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Anthropic
+ * Date: 2026
+ * Title: Sample code of Strategy pattern for MVC web app
+ * Type: [Source Code]
+ * Link to chat: <https://claude.ai/share/d67b55f8-8902-42d6-9787-94b14994261c> [Accessed 12 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Anthropic
+ * Date: 2026
+ * Title: Sample code of Observer pattern for MVC web app
+ * Type: [Source Code]
+ * Link to chat: <https://claude.ai/share/9278790e-8b3c-40e8-aabd-265a276db03b> [Accessed 12 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Bootstrap Team
+ * Date: 2026
+ * Title: Get started with Bootstrap
+ * Type: [Source Code]
+ * Available at: <https://getbootstrap.com/docs/5.3/getting-started/introduction/> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: xUnit.net
+ * Date: 2025
+ * Title: Getting Started with xUnit.net v2
+ * Type: [Source Code]
+ * Available at: <https://xunit.net/docs/getting-started/v2/getting-started> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2023
+ * Title: Testing without your production database system
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/ef/core/testing/testing-without-the-database> [Accessed 6 April 2026]
+ **************************************************************************************************************/
+
+
+/**************************************************************************************************************
+ * Author: DenzylSGovender
+ * Date: 2026
+ * Title: PROG7311-PART3_Support
+ * Type: [Source Code]
+ * Available at: <https://github.com/DenzylSGovender/PROG7311-PART3_Support.git> [Accessed 18 May 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2026
+ * Title: Create web APIs with ASP.NET Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-10.0> [Accessed 18 May 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2025
+ * Title: Configure JWT bearer authentication in ASP.NET Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/security/authentication/configure-jwt-bearer-authentication?view=aspnetcore-10.0> [Accessed 18 May 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2026
+ * Title: Generate OpenAPI documents
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/fundamentals/openapi/aspnetcore-openapi?view=aspnetcore-10.0> [Accessed 18 May 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2026
+ * Title: System.Net.Http.Json Namespace
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/dotnet/api/system.net.http.json?view=net-10.0> [Accessed 18 May 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2026
+ * Title: Applying Migrations
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/applying> [Accessed 18 May 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2022
+ * Title: Implementing the Repository and Unit of Work Patterns in an ASP.NET MVC Application (9 of 10)
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application> [Accessed 18 May 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2026
+ * Title: Integration tests in ASP.NET Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-10.0> [Accessed 18 May 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2025
+ * Title: Run an ASP.NET Core app in Docker containers
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/docker/building-net-docker-images?view=aspnetcore-10.0> [Accessed 18 May 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Docker Docs
+ * Date: 2026
+ * Title: Define services in Docker Compose
+ * Type: [Source Code]
+ * Available at: <https://docs.docker.com/reference/compose-file/services/> [Accessed 18 May 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2026
+ * Title: Quickstart: Run SQL Server Linux container images with Docker
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver17> [Accessed 18 May 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: GitHub Docs
+ * Date: 2026
+ * Title: Building and testing .NET
+ * Type: [Source Code]
+ * Available at: <https://docs.github.com/en/actions/tutorials/build-and-test-code/net> [Accessed 18 May 2026]
+ **************************************************************************************************************/
+/**************************************************************************************************************
+ * Author: GitHub Docs
+ * Date: 2026
+ * Title: Communicating with Docker service containers
+ * Type: [Source Code]
+ * Available at: <https://docs.github.com/en/actions/tutorials/use-containerized-services/use-docker-service-containers> [Accessed 18 May 2026]
+ **************************************************************************************************************/

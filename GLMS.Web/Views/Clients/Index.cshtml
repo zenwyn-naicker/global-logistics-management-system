@@ -1,0 +1,56 @@
+@*
+Author: Zenwyn Naicker
+Code Attribution:
+**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2025
+ * Title: Razor syntax reference for ASP.NET Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-10.0> [Accessed 6 April 2026]
+ **************************************************************************************************************
+**************************************************************************************************************
+ * Author: Bootstrap Team
+ * Date: 2026
+ * Title: Get started with Bootstrap
+ * Type: [Source Code]
+ * Available at: <https://getbootstrap.com/docs/5.3/getting-started/introduction/> [Accessed 6 April 2026]
+ **************************************************************************************************************
+*@
+
+@model IEnumerable<ClientViewModel>
+
+@{
+    ViewData["Title"] = "Clients";
+}
+
+<div class="glms-page-header">
+    <div>
+        <h2 class="glms-page-title">Clients</h2>
+        <p class="glms-page-subtitle">View and manage TechMove client records.</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary">Add Client</a>
+</div>
+
+<div class="glms-panel">
+    <table class="table table-hover table-striped align-middle mb-0">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact Details</th>
+                <th>Region</th>
+                <th>Contracts</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var client in Model)
+            {
+                <tr>
+                    <td>@client.Name</td>
+                    <td>@client.ContactDetails</td>
+                    <td>@client.Region</td>
+                    <td>@client.ContractCount</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

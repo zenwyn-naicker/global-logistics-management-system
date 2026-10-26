@@ -1,0 +1,71 @@
+name: GLMS integration tests
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GLMS_API_BASE_URL: http://localhost:5172/
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Generate disposable test credentials
+        shell: bash
+        run: |
+          sql_password="Ci1!$(openssl rand -hex 16)"
+          auth_password="$(openssl rand -base64 32)"
+          jwt_key="$(openssl rand -base64 48)"
+          for value in "$sql_password" "$auth_password" "$jwt_key"; do
+            echo "::add-mask::$value"
+          done
+          {
+            echo "MSSQL_SA_PASSWORD=$sql_password"
+            echo "ConnectionStrings__GlmsDb=Server=localhost,1433;Database=GLMS_Api_CI;User Id=sa;Password=$sql_password;TrustServerCertificate=True;Encrypt=False;MultipleActiveResultSets=true"
+            echo "Auth__Username=ci-user"
+            echo "Auth__Password=$auth_password"
+            echo "Jwt__Key=$jwt_key"
+            echo "GLMS_TEST_USERNAME=ci-user"
+            echo "GLMS_TEST_PASSWORD=$auth_password"
+          } >> "$GITHUB_ENV"
+      - name: Start disposable SQL Server
+        run: docker run --detach --name glms-ci-sql -e ACCEPT_EULA=Y -e MSSQL_SA_PASSWORD -p 1433:1433 mcr.microsoft.com/mssql/server:2022-latest
+      - name: Restore and build
+        run: |
+          dotnet restore GLMS.slnx
+          dotnet build GLMS.slnx --no-restore --configuration Release
+      - name: Wait for SQL Server
+        shell: bash
+        run: |
+          for i in {1..60}; do
+            if docker exec glms-ci-sql bash -c '/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "$MSSQL_SA_PASSWORD" -C -Q "SELECT 1"' > /dev/null 2>&1; then
+              exit 0
+            fi
+            sleep 2
+          done
+          exit 1
+      - name: Start API
+        run: dotnet run --project GLMS.Api --no-build --configuration Release --no-launch-profile > api.log 2>&1 &
+        env:
+          ASPNETCORE_URLS: http://localhost:5172
+          ASPNETCORE_ENVIRONMENT: Development
+      - name: Wait for API
+        shell: bash
+        run: |
+          for i in {1..60}; do
+            if curl --fail --silent http://localhost:5172/api/health > /dev/null; then exit 0; fi
+            sleep 2
+          done
+          exit 1
+      - name: Run tests
+        run: dotnet test GLMS.Tests --no-build --configuration Release
+      - name: Clean up SQL Server
+        if: always()
+        run: docker rm --force glms-ci-sql

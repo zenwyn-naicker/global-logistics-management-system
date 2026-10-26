@@ -1,0 +1,135 @@
+@*
+Author: Zenwyn Naicker
+Code Attribution:
+**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2025
+ * Title: Tag Helpers in forms in ASP.NET Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/mvc/views/working-with-forms?view=aspnetcore-10.0> [Accessed 6 April 2026]
+ **************************************************************************************************************
+**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2025
+ * Title: Razor syntax reference for ASP.NET Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-10.0> [Accessed 6 April 2026]
+ **************************************************************************************************************
+**************************************************************************************************************
+ * Author: Bootstrap Team
+ * Date: 2026
+ * Title: Get started with Bootstrap
+ * Type: [Source Code]
+ * Available at: <https://getbootstrap.com/docs/5.3/getting-started/introduction/> [Accessed 6 April 2026]
+ **************************************************************************************************************
+*@
+
+@model ContractViewModel
+
+@{
+    ViewData["Title"] = "Contract Details";
+}
+
+<div class="glms-page-header">
+    <div>
+        <h2 class="glms-page-title">Contract Details</h2>
+        <p class="glms-page-subtitle">Review contract status, signed agreement, and service requests.</p>
+    </div>
+    <a asp-action="Index" class="btn btn-outline-secondary">Back to Contracts</a>
+</div>
+
+<div class="glms-panel mb-4">
+    <div class="row g-3">
+        <div class="col-md-6">
+            <p><strong>Client:</strong> @Model.ClientName</p>
+            <p><strong>Start Date:</strong> @Model.StartDate.ToString("yyyy-MM-dd")</p>
+            <p><strong>End Date:</strong> @Model.EndDate.ToString("yyyy-MM-dd")</p>
+        </div>
+
+        <div class="col-md-6">
+            <p>
+                <strong>Status:</strong>
+                <span class="badge badge-status bg-@(Model.Status switch {
+                    ContractStatusViewModel.Active => "success",
+                    ContractStatusViewModel.Draft => "secondary",
+                    ContractStatusViewModel.Expired => "danger",
+                    ContractStatusViewModel.OnHold => "warning text-dark",
+                    ContractStatusViewModel.Declined => "dark",
+                    _ => "secondary"
+                })">@Model.Status</span>
+            </p>
+            <p><strong>Service Level:</strong> @Model.ServiceLevel</p>
+
+            @if (Model.HasAgreement)
+            {
+                <p>
+                    <strong>Signed Agreement:</strong>
+                    <a asp-action="DownloadAgreement" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-primary">Download PDF</a>
+                </p>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="glms-panel mb-4">
+    <h4 class="mb-3">Update Status</h4>
+
+    <form asp-action="UpdateStatus" method="post" class="row g-3">
+        <input type="hidden" name="id" value="@Model.Id" />
+
+        <div class="col-md-4">
+            <select name="newStatus" class="form-select">
+                @foreach (var s in Enum.GetValues<ContractStatusViewModel>())
+                {
+                    <option value="@s" selected="@(s == Model.Status)">@s</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-warning">Update Status</button>
+        </div>
+    </form>
+</div>
+
+<div class="glms-page-header">
+    <div>
+        <h4 class="glms-page-title">Service Requests</h4>
+    </div>
+
+    @if (Model.Status == ContractStatusViewModel.Active)
+    {
+        <a asp-controller="ServiceRequests" asp-action="Create" asp-route-contractId="@Model.Id" class="btn btn-success">
+            New Service Request
+        </a>
+    }
+</div>
+
+@if (Model.Status != ContractStatusViewModel.Active)
+{
+    <div class="alert alert-warning">Service requests are blocked because this contract is @Model.Status. Only Active contracts can receive service requests.</div>
+}
+
+<div class="glms-panel">
+    <table class="table table-hover table-striped align-middle mb-0">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Cost (ZAR)</th>
+                <th>Status</th>
+                <th>Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sr in Model.ServiceRequests)
+            {
+                <tr>
+                    <td>@sr.Description</td>
+                    <td>R @sr.CostZar.ToString("N2")</td>
+                    <td>@sr.Status</td>
+                    <td>@sr.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,107 @@
+@*
+Author: Zenwyn Naicker
+Code Attribution:
+**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2025
+ * Title: Tag Helpers in forms in ASP.NET Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/mvc/views/working-with-forms?view=aspnetcore-10.0> [Accessed 6 April 2026]
+ **************************************************************************************************************
+**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2025
+ * Title: Razor syntax reference for ASP.NET Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-10.0> [Accessed 6 April 2026]
+ **************************************************************************************************************
+**************************************************************************************************************
+ * Author: Bootstrap Team
+ * Date: 2026
+ * Title: Get started with Bootstrap
+ * Type: [Source Code]
+ * Available at: <https://getbootstrap.com/docs/5.3/getting-started/introduction/> [Accessed 6 April 2026]
+ **************************************************************************************************************
+*@
+
+@model IEnumerable<ContractViewModel>
+
+@{
+    ViewData["Title"] = "Contracts";
+}
+
+<div class="glms-page-header">
+    <div>
+        <h2 class="glms-page-title">Contracts</h2>
+        <p class="glms-page-subtitle">Search contracts by date range and status.</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary">New Contract</a>
+</div>
+
+<div class="glms-panel mb-4">
+    <form method="get" class="row g-3">
+        <div class="col-md-3">
+            <label class="form-label">Start Date</label>
+            <input type="date" name="startDate" value="@ViewBag.StartDate" class="form-control" />
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label">End Date</label>
+            <input type="date" name="endDate" value="@ViewBag.EndDate" class="form-control" />
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label">Status</label>
+            <select name="status" class="form-select">
+                <option value="">All</option>
+                @foreach (var s in Enum.GetValues<ContractStatusViewModel>())
+                {
+                    <option value="@s" selected="@(ViewBag.Status != null && ViewBag.Status == s)">@s</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-3 d-flex align-items-end">
+            <button type="submit" class="btn btn-outline-primary">Filter</button>
+        </div>
+    </form>
+</div>
+
+<div class="glms-panel">
+    <table class="table table-hover table-striped align-middle mb-0">
+        <thead>
+            <tr>
+                <th>Client</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Status</th>
+                <th>Service Level</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contract in Model)
+            {
+                <tr>
+                    <td>@contract.ClientName</td>
+                    <td>@contract.StartDate.ToString("yyyy-MM-dd")</td>
+                    <td>@contract.EndDate.ToString("yyyy-MM-dd")</td>
+                    <td>
+                        <span class="badge badge-status bg-@(contract.Status switch {
+                            ContractStatusViewModel.Active => "success",
+                            ContractStatusViewModel.Draft => "secondary",
+                            ContractStatusViewModel.Expired => "danger",
+                            ContractStatusViewModel.OnHold => "warning text-dark",
+                            ContractStatusViewModel.Declined => "dark",
+                            _ => "secondary"
+                        })">@contract.Status</span>
+                    </td>
+                    <td>@contract.ServiceLevel</td>
+                    <td class="text-end">
+                        <a asp-action="Details" asp-route-id="@contract.Id" class="btn btn-sm btn-outline-primary">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

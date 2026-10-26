@@ -1,0 +1,120 @@
+@*
+Author: Zenwyn Naicker
+Code Attribution:
+**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2025
+ * Title: Tag Helpers in forms in ASP.NET Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/mvc/views/working-with-forms?view=aspnetcore-10.0> [Accessed 6 April 2026]
+ **************************************************************************************************************
+**************************************************************************************************************
+ * Author: Microsoft
+ * Date: 2025
+ * Title: Razor syntax reference for ASP.NET Core
+ * Type: [Source Code]
+ * Available at: <https://learn.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-10.0> [Accessed 6 April 2026]
+ **************************************************************************************************************
+**************************************************************************************************************
+ * Author: ExchangeRate-API
+ * Date: 2026
+ * Title: Pair Conversion Requests
+ * Type: [Source Code]
+ * Available at: <https://www.exchangerate-api.com/docs/pair-conversion-requests> [Accessed 6 April 2026]
+ **************************************************************************************************************
+**************************************************************************************************************
+ * Author: Bootstrap Team
+ * Date: 2026
+ * Title: Get started with Bootstrap
+ * Type: [Source Code]
+ * Available at: <https://getbootstrap.com/docs/5.3/getting-started/introduction/> [Accessed 6 April 2026]
+ **************************************************************************************************************
+*@
+
+@model CreateServiceRequestViewModel
+
+@{
+    ViewData["Title"] = "New Service Request";
+}
+
+<div class="glms-page-header">
+    <div>
+        <h2 class="glms-page-title">New Service Request</h2>
+        <p class="glms-page-subtitle">Create a request for an active contract and convert USD to ZAR.</p>
+    </div>
+</div>
+
+<div class="glms-panel">
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input asp-for="ContractId" type="hidden" />
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CostUsd" class="form-label">Cost (USD)</label>
+            <input id="costInUsd" asp-for="CostUsd" type="number" step="0.01" min="0" class="form-control" />
+            <span asp-validation-for="CostUsd" class="text-danger"></span>
+            <small class="text-muted">
+                Exchange rate source: @ViewBag.ActiveStrategy
+            </small>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Estimated Cost (ZAR)</label>
+            <input id="costInZarPreview" type="text" class="form-control" value="R 0.00" readonly />
+            <small id="currencyStrategy" class="text-muted">
+                Preview and final saved amount are calculated by the API currency strategy.
+            </small>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a asp-controller="Contracts" asp-action="Details" asp-route-id="@Model.ContractId" class="btn btn-outline-secondary">Cancel</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        const usdInput = document.getElementById("costInUsd");
+        const zarPreview = document.getElementById("costInZarPreview");
+        const strategyLabel = document.getElementById("currencyStrategy");
+        let previewTimer;
+
+        async function updateZarPreview() {
+            const usd = Number(usdInput.value);
+
+            if (!usdInput.value || Number.isNaN(usd) || usd < 0) {
+                zarPreview.value = "R 0.00";
+                return;
+            }
+
+            zarPreview.value = "Calculating...";
+
+            try {
+                const response = await fetch(`/ServiceRequests/PreviewZar?costInUsd=${encodeURIComponent(usd)}`);
+
+                if (!response.ok) {
+                    zarPreview.value = "Unable to calculate";
+                    return;
+                }
+
+                const data = await response.json();
+                zarPreview.value = data.formatted;
+                strategyLabel.textContent = `Exchange rate source: ${data.strategy}`;
+            } catch {
+                zarPreview.value = "Unable to calculate";
+            }
+        }
+
+        usdInput.addEventListener("input", () => {
+            clearTimeout(previewTimer);
+            previewTimer = setTimeout(updateZarPreview, 500);
+        });
+    </script>
+}
